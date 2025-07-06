@@ -15,6 +15,7 @@ module.exports = {
     },
   },
   plugins: [
+    require('@tailwindcss/aspect-ratio'), // ← 追加
     // require('@tailwindcss/forms'),
     // require('@tailwindcss/typography'),
     // require('@tailwindcss/container-queries'),

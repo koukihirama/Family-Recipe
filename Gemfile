@@ -24,10 +24,9 @@ gem "devise"
 
 gem "image_processing", "~> 1.2"
 
-gem 'aws-sdk-s3'
+gem "aws-sdk-s3"
 
 group :development, :test do
-  
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
 
   gem "brakeman", require: false
