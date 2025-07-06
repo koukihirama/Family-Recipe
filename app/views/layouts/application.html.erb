@@ -43,7 +43,13 @@
     <!-- モバイルメニュー -->
     <div id="mobile-menu" class="hs-overlay hidden fixed inset-0 bg-black bg-opacity-50 z-50">
       <div class="bg-[#fffaf3] w-64 h-full p-4 shadow">
-        <button class="hs-overlay-close mb-4 text-gray-500" aria-label="閉じる">✕</button>
+        <!-- ✕ ボタン（修正済） -->
+        <button type="button"
+                class="hs-overlay-close mb-4 text-gray-500"
+                data-hs-overlay-close
+                aria-label="閉じる">
+          ✕
+        </button>
         <nav class="space-y-4">
           <%= link_to "レシピ一覧", recipes_path, class: "block hover:text-[#d16a50]" %>
           <%= link_to "投稿", new_recipe_path, class: "block hover:text-[#d16a50]" %>
