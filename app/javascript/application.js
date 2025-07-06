@@ -9,24 +9,29 @@ document.addEventListener("turbo:load", () => {
 
   const menu = document.getElementById("mobile-menu");
 
-  // ✅ 保険としてオーバーレイを強制的に隠す（遷移後の残留対策）
   if (menu) {
+    // メニューを毎回リセット（遷移後の残留対策）
     menu.classList.add("hidden");
-  }
 
-  // ✕ ボタンの自作動作
-  const closeBtn = document.querySelector("#mobile-menu .custom-close-btn");
-  if (closeBtn && menu) {
-    closeBtn.addEventListener("click", () => {
-      menu.classList.add("hidden");
-    });
-  }
+    // 古いイベントを削除してから再登録（重要！）
+    const newCloseBtn = menu.querySelector(".custom-close-btn");
+    const newOpenBtn = document.querySelector("[data-hs-overlay='#mobile-menu']");
 
-  // 開くトグルボタン（Prelineのもの）
-  const openBtn = document.querySelector("[data-hs-overlay='#mobile-menu']");
-  if (openBtn && menu) {
-    openBtn.addEventListener("click", () => {
-      menu.classList.remove("hidden");
-    });
+    // 古いイベントを削除するため、一度クローンを使って置き換える
+    if (newCloseBtn) {
+      const clonedCloseBtn = newCloseBtn.cloneNode(true);
+      newCloseBtn.parentNode.replaceChild(clonedCloseBtn, newCloseBtn);
+      clonedCloseBtn.addEventListener("click", () => {
+        menu.classList.add("hidden");
+      });
+    }
+
+    if (newOpenBtn) {
+      const clonedOpenBtn = newOpenBtn.cloneNode(true);
+      newOpenBtn.parentNode.replaceChild(clonedOpenBtn, newOpenBtn);
+      clonedOpenBtn.addEventListener("click", () => {
+        menu.classList.remove("hidden");
+      });
+    }
   }
 });
