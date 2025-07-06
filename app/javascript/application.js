@@ -2,13 +2,19 @@ import "@hotwired/turbo-rails"
 import "preline"
 import "./controllers"
 
-// Turbo遷移ごとにPrelineを再初期化
+
 document.addEventListener("turbo:load", () => {
-  window.HSStaticMethods?.autoInit?.(); // Preline の再初期化（必要）
+  // Prelineの再初期化
+  window.HSStaticMethods?.autoInit?.();
 
   const menu = document.getElementById("mobile-menu");
 
-  // 自作の ✕ ボタン動作（Preline が効かない時の保険）
+  // ✅ 保険としてオーバーレイを強制的に隠す（遷移後の残留対策）
+  if (menu) {
+    menu.classList.add("hidden");
+  }
+
+  // ✕ ボタンの自作動作
   const closeBtn = document.querySelector("#mobile-menu .custom-close-btn");
   if (closeBtn && menu) {
     closeBtn.addEventListener("click", () => {
@@ -16,7 +22,7 @@ document.addEventListener("turbo:load", () => {
     });
   }
 
-  // トグルボタン（開く）
+  // 開くトグルボタン（Prelineのもの）
   const openBtn = document.querySelector("[data-hs-overlay='#mobile-menu']");
   if (openBtn && menu) {
     openBtn.addEventListener("click", () => {
