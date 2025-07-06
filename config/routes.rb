@@ -8,9 +8,6 @@ Rails.application.routes.draw do
   resource :family_login, only: [ :new, :create ]
   delete "/family_logout", to: "family_logins#destroy", as: :family_logout
 
-  # 投稿
-  resources :posts
-
   # レシピ
   resources :recipes
 
