@@ -1,8 +1,8 @@
 import "@hotwired/turbo-rails"
+import "preline"
 import "./controllers"
-import 'preline'
 
+// Turbo遷移ごとにPrelineを再初期化する
 document.addEventListener("turbo:load", () => {
-  // Preline UI の全コンポーネントを初期化
-  window.HSStaticMethods?.autoInit();
+  window.HSStaticMethods?.autoInit?.();
 });
