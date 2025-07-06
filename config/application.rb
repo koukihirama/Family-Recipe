@@ -11,7 +11,7 @@ module Myapp
     config.load_defaults 7.2
     config.autoload_lib(ignore: %w[assets tasks])
 
-    ENV['AWS_USE_CHECKSUM'] = 'false'
+    ENV["AWS_USE_CHECKSUM"] = "false"
 
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")

@@ -16,7 +16,7 @@ class Recipe < ApplicationRecord
   def normalize_required_time
     if required_time.is_a?(String)
       # 全角数字を半角に変換
-      self.required_time = required_time.tr('０-９', '0-9')
+      self.required_time = required_time.tr("０-９", "0-9")
     end
   end
 end

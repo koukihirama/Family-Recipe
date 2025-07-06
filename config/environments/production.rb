@@ -1,7 +1,6 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-
   config.active_storage.service = :r2
 
   config.enable_reloading = false
@@ -30,5 +29,4 @@ Rails.application.configure do
   config.active_support.report_deprecations = false
 
   config.active_record.dump_schema_after_migration = false
-
 end
