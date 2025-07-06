@@ -25,7 +25,7 @@
                 <span>⏱️ <%= recipe.required_time %>分</span>
               <% end %>
               <% if recipe.difficulty.present? %>
-                <span>⭐️ <%= recipe.difficulty %></span>
+                <span><%= difficulty_label(recipe.difficulty) %></span>
               <% end %>
             </div>
 
