@@ -43,15 +43,15 @@
         <%= f.text_area :instructions, rows: 5, placeholder: "卵と調味料を混ぜる\nフライパンで焼く", class: "w-full p-4 text-lg border rounded-xl", required: true %>
       </div>
 
-      <%= f.label :difficulty, "🌟 つくりやすさ", class: "block text-xl font-semibold mb-2" %>
+      <%= f.label :difficulty, "☆ つくりやすさ", class: "block text-xl font-semibold mb-2" %>
       <p class="text-sm text-gray-600 mb-1">どれくらい簡単か選んでください</p>
 
       <%= f.select :difficulty, options_for_select([
-        ["⭐️ とても簡単（1）", 1],
-        ["⭐️⭐️ 簡単（2）", 2],
-        ["⭐️⭐️⭐️ ふつう（3）", 3],
-        ["⭐️⭐️⭐️⭐️ 少しむずかしい（4）", 4],
-        ["⭐️⭐️⭐️⭐️⭐️ むずかしい（5）", 5]
+        ["★ とても簡単（1）", 1],
+        ["★★ 簡単（2）", 2],
+        ["★★★ ふつう（3）", 3],
+        ["★★★★ 少しむずかしい（4）", 4],
+        ["★★★★★ むずかしい（5）", 5]
       ], selected: @recipe.difficulty), {}, class: "w-full p-4 text-lg border rounded-xl" %>
 
       <!-- 🖼️ 写真 -->
