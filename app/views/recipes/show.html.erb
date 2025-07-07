@@ -44,9 +44,18 @@
 
   <!-- 🌟 つくりやすさ -->
   <div class="mb-6">
-    <h2 class="text-2xl font-semibold text-gray-800 flex items-center gap-2">🌟 つくりやすさ</h2>
-    <p class="text-xl text-gray-900 leading-relaxed mt-2"><%= @recipe.difficulty %></p>
+    <h2 class="text-2xl font-semibold text-gray-800 flex items-center gap-2">☆ つくりやすさ</h2>
+    <% difficulty_label = case @recipe.difficulty.to_i
+      when 1 then "★ とても簡単（1）"
+      when 2 then "★★ 簡単（2）"
+      when 3 then "★★★ ふつう（3）"
+      when 4 then "★★★★ 少しむずかしい（4）"
+      when 5 then "★★★★★ むずかしい（5）"
+      else "未設定"
+    end %>
+    <p class="text-xl text-gray-900 leading-relaxed mt-2"><%= difficulty_label %></p>
   </div>
+
 
   <!-- 👤 作ったひと・日付 -->
   <div class="text-lg text-gray-600 mb-8 text-center">
