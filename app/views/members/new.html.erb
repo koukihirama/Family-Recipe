@@ -1,0 +1,19 @@
+<h1 class="text-3xl font-bold text-center text-[#d16a50] mb-10 bg-orange-50 px-6 py-4 rounded-2xl shadow tracking-wide">
+  👤 新しいメンバーを追加
+</h1>
+
+<div class="bg-[#fffaf3] p-8 rounded-[2rem] shadow-2xl max-w-lg mx-auto text-[#4b3e39]">
+  <%= form_with model: [@family, @member], local: true do |f| %>
+    <div class="mb-6">
+      <%= f.label :name, "🧑‍🍳 メンバー名", class: "block text-xl font-semibold mb-2" %>
+      <%= f.text_field :name,
+          class: "w-full p-4 text-lg border border-gray-300 rounded-xl shadow-inner focus:outline-none focus:ring-2 focus:ring-[#d16a50]",
+          placeholder: "例：お母さん、たかし など" %>
+    </div>
+
+    <div class="text-center">
+      <%= f.submit "✅ 追加する",
+          class: "bg-[#d16a50] hover:bg-[#b8553f] text-white text-xl font-bold py-4 px-6 rounded-full w-full shadow-lg transition duration-300 ease-in-out" %>
+    </div>
+  <% end %>
+</div>

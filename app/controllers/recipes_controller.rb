@@ -59,7 +59,7 @@ end
   private
 
   def recipe_params
-  params.require(:recipe).permit(:title, :ingredients, :instructions, :difficulty, :image, :tag_names, :required_time)
+    params.require(:recipe).permit(:title, :ingredients, :instructions, :required_time, :difficulty, :image, :tag_names, :member_id)
   end
 
   def set_recipe

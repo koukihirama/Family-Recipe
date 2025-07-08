@@ -15,6 +15,20 @@
     </div>
   </div>
 
+  <%= link_to "👤 メンバーを追加する", new_family_member_path(current_family),
+      class: "block bg-green-100 hover:bg-green-200 text-green-800 font-bold text-center py-3 rounded-xl shadow transition mt-4" %>
+
+  <% if @family.members.any? %>
+  <div class="mt-6">
+    <h3 class="text-lg font-semibold text-[#4b3e39] mb-2">👥 登録済みメンバー</h3>
+    <ul class="space-y-1">
+      <% @family.members.each do |member| %>
+        <li class="bg-white px-4 py-2 rounded shadow-inner text-[#6e5e57]"><%= member.name %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
   <p class="text-sm text-gray-600 mb-6">
     ※この家族コードを家族に伝えて、一緒にログインしてもらってください。
   </p>
