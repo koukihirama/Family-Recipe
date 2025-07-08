@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   # ホーム画面
   root "home#index"
 
-  resources :families, only: [ :new, :create, :show ]
+  # 家族（ネストしてメンバーも追加）
+  resources :families, only: [ :new, :create, :show ] do
+    resources :members, only: [ :new, :create ]
+  end
 
   # 家族コードログイン
   resource :family_login, only: [ :new, :create ]

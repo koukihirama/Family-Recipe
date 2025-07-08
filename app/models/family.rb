@@ -1,6 +1,7 @@
 class Family < ApplicationRecord
   has_many :users, dependent: :destroy
   has_many :recipes
+  has_many :members, dependent: :destroy
 
   before_create :generate_code
 

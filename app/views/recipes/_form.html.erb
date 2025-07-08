@@ -68,6 +68,18 @@
         <%= f.text_field :tag_names, placeholder: "朝ごはん, 卵料理, 簡単", class: "w-full p-4 text-lg border rounded-xl" %>
       </div>
 
+      <!-- 👤 投稿者（＋メンバー追加リンク付き） -->
+      <div>
+        <div class="flex items-center justify-between">
+          <%= f.label :member_id, "👤 投稿者", class: "block text-xl font-semibold mb-2" %>
+          <%= link_to "＋新しいメンバーを追加", new_family_member_path(current_family),
+            class: "text-sm text-blue-600 underline" %>
+      </div>
+      <%= f.collection_select :member_id, current_family.members, :id, :name,
+          { prompt: "誰が投稿しますか？" },
+          class: "w-full p-4 text-lg border rounded-xl" %>
+      </div>
+
       <!-- ✅ 投稿ボタン -->
       <div class="text-center">
         <%= f.submit "✅ 投稿", class: "bg-blue-500 text-white text-xl px-8 py-4 rounded-full hover:bg-blue-600 transition w-full" %>
