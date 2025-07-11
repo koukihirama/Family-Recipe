@@ -80,6 +80,15 @@
           class: "w-full p-4 text-lg border rounded-xl" %>
       </div>
 
+      <div>
+        <%= f.label :published, "🌍 このレシピを公開する", class: "block text-xl font-semibold mb-2" %>
+        <%= f.check_box :published, {}, true, false %>
+        <p class="text-sm text-gray-600 mt-1">
+          このレシピは他の人にも見られるようになります。<br>
+          投稿者の名前は <strong>ランダムな名前で匿名表示</strong> されます。
+        </p>
+      </div>
+
       <!-- ✅ 投稿ボタン -->
       <div class="text-center">
         <%= f.submit "✅ 投稿", class: "bg-blue-500 text-white text-xl px-8 py-4 rounded-full hover:bg-blue-600 transition w-full" %>

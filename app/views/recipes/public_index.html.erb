@@ -1,0 +1,37 @@
+<h1 class="text-3xl font-bold text-center text-orange-700 mb-8
+           bg-orange-50 px-6 py-3 rounded-xl shadow-md tracking-wide font-sans">🌐 みんなのレシピ</h1>
+
+<div class="max-w-3xl mx-auto mb-8 px-4">
+  <div class="bg-orange-50 px-6 py-4 rounded-2xl shadow-lg border border-gray-200">
+    <p class="text-base text-gray-800 leading-relaxed text-center font-medium">
+      公開されたレシピの一覧です。<br>
+      投稿者の名前は <span class="text-orange-700 font-bold">ランダムなニックネーム</span> で表示されます。
+    </p>
+  </div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+  <% @recipes.each do |recipe| %>
+    <div class="bg-yellow-50/80 backdrop-blur-md text-[#4b3e39] p-6 rounded-3xl shadow-2xl">
+      
+      <!-- レシピ名 -->
+      <h2 class="text-2xl font-semibold mb-2 text-[#d16a50]"><%= recipe.title %></h2>
+
+      <!-- 投稿者名（匿名表示） -->
+      <p class="text-sm text-gray-700 mb-1">
+        👪 <%= recipe.family.shared_name %> のレシピ
+      </p>
+
+      <!-- 投稿日 -->
+      <p class="text-sm text-gray-500 mb-4">
+        📅 <%= recipe.created_at.strftime("%Y/%m/%d") %>
+      </p>
+
+      <!-- 「見る」リンク -->
+      <div class="text-right">
+        <%= link_to "👀 レシピを見る", public_view_recipe_path(recipe),
+              class: "inline-block bg-blue-500 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-600 transition" %>
+      </div>
+    </div>
+  <% end %>
+</div

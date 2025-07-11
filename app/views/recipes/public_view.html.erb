@@ -1,0 +1,68 @@
+<div class="bg-yellow-50/80 backdrop-blur-md text-[#4b3e39] p-8 rounded-3xl shadow-2xl max-w-2xl mx-auto">
+
+  <!-- 📸 レシピ画像 -->
+  <% if @recipe.image.attached? %>
+    <%= image_tag @recipe.image, class: "w-full h-auto rounded-xl mb-6 shadow" %>
+  <% end %>
+
+  <!-- 📝 レシピタイトル -->
+  <h1 class="text-4xl font-bold text-orange-700 mb-6 text-center tracking-wide">
+    <%= @recipe.title %>
+  </h1>
+
+  <!-- 🏷️ タグ -->
+  <% if @recipe.tags.any? %>
+    <div class="mb-6 flex flex-wrap gap-3 justify-center">
+      <% @recipe.tags.each do |tag| %>
+        <span class="bg-orange-100 text-orange-700 text-lg px-3 py-1 rounded-full shadow-sm">
+          #<%= tag.name %>
+        </span>
+      <% end %>
+    </div>
+  <% end %>
+
+  <!-- 🕒 つくる時間 -->
+  <div class="mb-6">
+    <h2 class="text-2xl font-semibold flex items-center gap-2">🕒 つくる時間</h2>
+    <p class="text-xl mt-2"><%= @recipe.required_time %>分</p>
+  </div>
+
+  <!-- 🥬 つかうもの -->
+  <div class="mb-6">
+    <h2 class="text-2xl font-semibold flex items-center gap-2">🥬 つかうもの</h2>
+    <p class="text-xl mt-2 whitespace-pre-line"><%= @recipe.ingredients %></p>
+  </div>
+
+  <!-- 🍳 つくりかた -->
+  <div class="mb-6">
+    <h2 class="text-2xl font-semibold flex items-center gap-2">🍳 つくりかた</h2>
+    <ol class="list-decimal list-inside mt-2 space-y-2 text-xl leading-relaxed">
+      <% @recipe.instructions.to_s.split(/\r?\n/).reject(&:blank?).each do |step| %>
+        <li><%= step %></li>
+      <% end %>
+    </ol>
+  </div>
+
+  <!-- ☆ つくりやすさ -->
+  <div class="mb-6">
+    <h2 class="text-2xl font-semibold flex items-center gap-2">☆ つくりやすさ</h2>
+    <% difficulty_label = case @recipe.difficulty.to_i
+      when 1 then "★ とても簡単（1）"
+      when 2 then "★★ 簡単（2）"
+      when 3 then "★★★ ふつう（3）"
+      when 4 then "★★★★ 少しむずかしい（4）"
+      when 5 then "★★★★★ むずかしい（5）"
+      else "未設定"
+    end %>
+    <p class="text-xl mt-2"><%= difficulty_label %></p>
+  </div>
+
+  <!-- 👤 匿名投稿者・日付 -->
+  <div class="text-lg text-gray-700 mb-4 text-center">
+    👤 投稿者：<%= @recipe.family.shared_name %> のレシピ
+  </div>
+  <div class="text-sm text-gray-600 text-center mb-8">
+    📅 のせた日：<%= @recipe.created_at.strftime("%Y年%m月%d日") %>
+  </div>
+
+</div>
