@@ -20,6 +20,7 @@
         <nav class="hidden md:flex space-x-6 items-center">
           <%= link_to "レシピ一覧", recipes_path, class: "hover:text-[#d16a50]" %>
           <%= link_to "投稿", new_recipe_path, class: "hover:text-[#d16a50]" %>
+          <%= link_to "🌐 みんなのレシピを見る", public_index_recipes_path, class: "hover:text-[#d16a50]" %>
 
           <% if current_family %>
             <%= link_to "家族設定", family_path(current_family), class: "hover:text-[#d16a50]" %>
@@ -52,6 +53,7 @@
         <nav class="space-y-4">
           <%= link_to "レシピ一覧", recipes_path, class: "block hover:text-[#d16a50]" %>
           <%= link_to "投稿", new_recipe_path, class: "block hover:text-[#d16a50]" %>
+          <%= link_to "みんなのレシピを見る", public_index_recipes_path, class: "block hover:text-[#d16a50]" %>
 
           <% if current_family %>
             <%= link_to "家族設定", family_path(current_family), class: "block hover:text-[#d16a50]" %>

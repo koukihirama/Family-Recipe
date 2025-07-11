@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_07_08_085327) do
+ActiveRecord::Schema[7.2].define(version: 2025_07_11_011911) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,6 +47,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_08_085327) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "code"
+    t.string "shared_name"
   end
 
   create_table "members", force: :cascade do |t|
@@ -76,6 +77,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_08_085327) do
     t.integer "required_time"
     t.bigint "family_id", null: false
     t.bigint "member_id"
+    t.boolean "published"
+    t.boolean "is_public"
     t.index ["family_id"], name: "index_recipes_on_family_id"
     t.index ["member_id"], name: "index_recipes_on_member_id"
   end
