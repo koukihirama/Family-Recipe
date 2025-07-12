@@ -76,7 +76,7 @@
             class: "text-sm text-blue-600 underline" %>
       </div>
       <%= f.collection_select :member_id, current_family.members, :id, :name,
-          { prompt: "誰が投稿しますか？" },
+          { prompt: "誰が投稿しますか？（未選択可）" },
           class: "w-full p-4 text-lg border rounded-xl" %>
       </div>
 

@@ -2,7 +2,7 @@ class Recipe < ApplicationRecord
   before_validation :normalize_required_time
 
   belongs_to :family
-  belongs_to :member
+  belongs_to :member, optional: true
 
   has_many :recipe_tags, dependent: :destroy
   has_many :tags, through: :recipe_tags
