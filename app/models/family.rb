@@ -3,8 +3,8 @@ class Family < ApplicationRecord
   has_many :recipes
   has_many :members, dependent: :destroy
 
-  before_create :generate_code
-  before_create :assign_random_shared_name
+  before_validation :generate_code, on: :create
+  before_validation :assign_random_shared_name, on: :create
 
   validates :name, presence: true
   validates :code, presence: true, uniqueness: true
@@ -21,9 +21,14 @@ class Family < ApplicationRecord
   end
 
   def generate_shared_name
-  loop do
-    name = "#{adjectives.sample}#{nouns.sample}"
-    break name unless Family.exists?(shared_name: name)
+    adjectives = %w[ほのぼの にぎやか やさしい しあわせ]
+    nouns = %w[家族 キッチン 食卓 ごはん 料理団]
+
+    10.times do
+      name = "#{adjectives.sample}#{nouns.sample}"
+      return name unless Family.exists?(shared_name: name)
+    end
+
+    "ななしの家族#{SecureRandom.hex(2)}"
   end
-end
 end

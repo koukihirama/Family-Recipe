@@ -77,7 +77,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_11_011911) do
     t.integer "required_time"
     t.bigint "family_id", null: false
     t.bigint "member_id"
-    t.boolean "published"
+    t.boolean "published", default: false
     t.boolean "is_public"
     t.index ["family_id"], name: "index_recipes_on_family_id"
     t.index ["member_id"], name: "index_recipes_on_member_id"
