@@ -11,6 +11,14 @@ Rails.application.routes.draw do
   resource :family_login, only: [:new, :create]
   delete "/family_logout", to: "family_logins#destroy", as: :family_logout
 
+  get 'join/:code', to: 'families#join', as: :join_family
+
+  resources :families do
+  member do
+    patch :regenerate_family_code
+  end
+end
+
   # レシピ
   resources :recipes do
   member do

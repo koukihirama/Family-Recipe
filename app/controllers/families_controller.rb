@@ -8,7 +8,7 @@ class FamiliesController < ApplicationController
 
   def create
     @family = Family.new(family_params)
-    @family.code = SecureRandom.hex(4) # 例: 8桁のランダムコード
+    @family.code = SecureRandom.hex(16)
 
     if @family.save
       session[:family_id] = @family.id
@@ -18,6 +18,23 @@ class FamiliesController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+  def join
+  @family = Family.find_by(code: params[:code])
+
+  if @family
+    session[:family_id] = @family.id
+    redirect_to root_path, notice: "家族に参加しました！"
+  else
+    redirect_to family_login_path, alert: "無効な家族コードです"
+  end
+end
+
+def regenerate_family_code
+  @family = Family.find(params[:id])
+  @family.update(code: SecureRandom.urlsafe_base64(15))
+  redirect_to @family, notice: "家族コードを再発行しました。新しいコードをご確認ください。"
+end
 
   def show
     @family = current_family
